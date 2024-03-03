@@ -8,7 +8,7 @@ public class Main {
         Faculty.addDef();
         Cathedra.addDef();
         //klfslkj
-//pes patron
+//pes patronf
         //пес патрон
         //пес патрон
 
