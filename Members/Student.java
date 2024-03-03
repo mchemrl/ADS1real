@@ -9,8 +9,7 @@ package Members;
 
 import Extends.DataInput;
 
-public class
-Student extends Person {
+public class Student extends Person {
     private int course;
     private int group;
 
