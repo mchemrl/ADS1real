@@ -69,6 +69,7 @@ Teacher extends Person {
     /**
      * show all the teachers
      */
+
     public static void showTeachers() {
         System.out.println("list of teacher:");
         for (Teacher teacher : teachers) {

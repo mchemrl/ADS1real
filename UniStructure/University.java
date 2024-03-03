@@ -584,9 +584,10 @@ public class University {
         int leftSize = leftHalf.length;
         int rightSize = rightHalf.length;
         int i = 0, j = 0, k = 0;
+
         while (i < leftSize && j < rightSize) {
             if (sortDirection == 1) { // Ascending
-                if (leftHalf[i].getFullName().toLowerCase().compareTo(rightHalf[j].getFullName().toLowerCase()) <= 0) {
+                if (ukrainianCompareTo(leftHalf[i].getFullName(), rightHalf[j].getFullName()) <= 0) {
                     students[k] = leftHalf[i];
                     i++;
                 } else {
@@ -594,7 +595,7 @@ public class University {
                     j++;
                 }
             } else { // Descending
-                if (leftHalf[i].getFullName().toLowerCase().compareTo(rightHalf[j].getFullName().toLowerCase()) >= 0) {
+                if (ukrainianCompareTo(leftHalf[i].getFullName(), rightHalf[j].getFullName()) >= 0) {
                     students[k] = leftHalf[i];
                     i++;
                 } else {
@@ -614,5 +615,10 @@ public class University {
             j++;
             k++;
         }
+    }
+
+    // Method to compare strings according to Ukrainian alphabet
+    private static int ukrainianCompareTo(String str1, String str2) {
+        return str1.compareToIgnoreCase(str2);
     }
 }
