@@ -47,6 +47,7 @@ public class Cathedra {
     public String getName() {
         return name;
     }
+
     /**
      * adds a student to the list of students
      */
@@ -115,30 +116,44 @@ public class Cathedra {
      * deletes a student from the list of students
      */
     public void deleteStudent() {
-        showStudents();
-        int index = DataInput.getInt("Enter the index of the student you want to delete: ");
-        Student[] newStudents = new Student[students.length - 1];
-        for (int i = 0, j = 0; i < students.length; i++) {
-            if (i != index) {
-                newStudents[j++] = students[i];
+        if (students.length == 0) {
+            System.out.println("There are no students to delete.");
+        } else {
+            showStudents();
+            int index;
+            do {
+                index = DataInput.getInt("Enter the index of the student you want to delete: ");
+            } while (index < 0 || index >= students.length);
+            Student[] newStudents = new Student[students.length - 1];
+            for (int i = 0, j = 0; i < students.length; i++) {
+                if (i != index) {
+                    newStudents[j++] = students[i];
+                }
             }
+            this.students = newStudents;
         }
-        this.students = newStudents;
     }
 
     /**
      * deletes a teacher from the list of teachers
      */
     public void deleteTeacher() {
-        showTeachers();
-        int index = DataInput.getInt("Enter the index of the teacher you want to delete: ");
-        Teacher[] newTeachers = new Teacher[teachers.length - 1];
-        for (int i = 0, j = 0; i < teachers.length; i++) {
-            if (i != index) {
-                newTeachers[j++] = teachers[i];
+        if (teachers.length == 0) {
+            System.out.println("There are no teachers to delete.");
+        } else {
+            showTeachers();
+            int index;
+            do {
+                index = DataInput.getInt("Enter the index of the teacher you want to delete: ");
+            } while (index < 0 || index >= teachers.length);
+            Teacher[] newTeachers = new Teacher[teachers.length - 1];
+            for (int i = 0, j = 0; i < teachers.length; i++) {
+                if (i != index) {
+                    newTeachers[j++] = teachers[i];
+                }
             }
+            this.teachers = newTeachers;
         }
-        this.teachers = newTeachers;
     }
 
     /**
@@ -163,36 +178,45 @@ public class Cathedra {
      * edits a student from the list of students
      */
     public void editStudent() {
-        int course;
-        int group;
-        int repeat;
-        do {
-            showStudents();
-            int index = DataInput.getInt("enter the index of the student you want to edit: ");
-            String change;
-            do{change = DataInput.getString("enter what you want to change: ");}
-            while (!change.equals("name") && !change.equals("course") && !change.equals("group"));
-            switch (change) {
-                case "name":
-                    String name = DataInput.getString("enter the new name:");
-                    this.students[index].setFullName(name);
-                    break;
-                case "course":
-                    do {
-                        course = DataInput.getInt("enter the new course: ");
-                    } while (course < 1 || course > 6);
-                    this.students[index].setCourse(course);
-                    break;
-                case "group":
-                    group = DataInput.getInt("enter the new group: ");
-                    this.students[index].setGroup(group);
-                    break;
-            }
-            repeat = DataInput.getInt("press 0 to change something else, press anything else to continue: ");
-            if (repeat != 0) break;
-        } while (true);
-    }
+        if (students.length == 0) {
+            System.out.println("There are no students to edit.");
+        } else {
+            int course;
+            int group;
+            int repeat;
+            do {
+                showStudents();
+                int index;
+                do {
+                    index = DataInput.getInt("enter the index of the student you want to edit: ");
+                } while (index < 0 || index >= students.length);
+                String change;
+                do {
+                    change = DataInput.getString("enter what you want to change: ");
+                }
+                while (!change.equals("name") && !change.equals("course") && !change.equals("group"));
+                switch (change) {
+                    case "name":
+                        String name = DataInput.getString("enter the new name:");
+                        this.students[index].setFullName(name);
+                        break;
+                    case "course":
+                        do {
+                            course = DataInput.getInt("enter the new course: ");
+                        } while (course < 1 || course > 6);
+                        this.students[index].setCourse(course);
+                        break;
+                    case "group":
+                        group = DataInput.getInt("enter the new group: ");
+                        this.students[index].setGroup(group);
+                        break;
+                }
+                repeat = DataInput.getInt("press 0 to change something else, press anything else to continue: ");
+                if (repeat != 0) break;
+            } while (true);
+        }
 
+    }
 
     /**
      * edits a teacher from the list of teachers
@@ -201,9 +225,14 @@ public class Cathedra {
         int repeat;
         do {
             showTeachers();
-            int index = DataInput.getInt("enter the index of the teacher you want to edit: ");
+            int index;
+            do {
+                index = DataInput.getInt("enter the index of the teacher you want to edit: ");
+            } while (index < 0 || index >= teachers.length);
             String change;
-            do{ change = DataInput.getString("enter what you want to change: ");}
+            do {
+                change = DataInput.getString("enter what you want to change: ");
+            }
             while (!change.equals("name") && !change.equals("discipline"));
             switch (change) {
                 case "name":

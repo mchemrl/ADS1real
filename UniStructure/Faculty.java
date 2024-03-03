@@ -48,7 +48,7 @@ public class Faculty {
         this.cathedras = newCathedra;
     }
 
-    public static void addDef(){
+    public static void addDef() {
         Faculty getFI = University.faculties[0];
         getFI.addDefCathedra("Math");
         getFI.addDefCathedra("Programming");
@@ -62,47 +62,62 @@ public class Faculty {
 
     //delete cathedra from the array of Faculty
     public void deleteCathedra() {
-        System.out.println(Arrays.toString(cathedras));
-
-        int index = DataInput.getInt("Enter the index of the cathedra you want to delete: ");
-        Cathedra[] newCathedras = new Cathedra[cathedras.length - 1];
-        for (int i = 0, j = 0; i < cathedras.length; i++) {
-            if (i != index) {
-                newCathedras[j++] = cathedras[i];
+        if (cathedras.length == 0) {
+            System.out.println("There are no cathedras to delete");
+        } else {
+            showCathedra();
+            int index;
+            do {
+                index = DataInput.getInt("Enter the index of the cathedra you want to delete: ");
+            } while (index < 0 || index >= cathedras.length);
+            Cathedra[] newCathedras = new Cathedra[cathedras.length - 1];
+            for (int i = 0, j = 0; i < cathedras.length; i++) {
+                if (i != index) {
+                    newCathedras[j++] = cathedras[i];
+                }
             }
+            this.cathedras = newCathedras;
         }
-        this.cathedras = newCathedras;
     }
 
 
     //show cathedra from the array of Faculty
     public void showCathedra() {
-        System.out.println("list of cathedra of " + name + ":");
-        for (Cathedra cathedra : cathedras) {
-            System.out.println(cathedra.toString());
+        if (cathedras.length == 0) {
+            System.out.println("There are no cathedras to show");
+        } else {
+            System.out.println("list of cathedra of " + name + ":");
+            for (Cathedra cathedra : cathedras) {
+                System.out.println(cathedra.toString());
+            }
         }
     }
 
     //edit cathedra from the array of Faculty
     public void editCathedra() {
-        System.out.println(Arrays.toString(cathedras));
-        int index = DataInput.getInt("enter the index of the cathedra you want to edit: ");
-        String name = DataInput.getString("enter the new name: ");
-        cathedras[index].setName(name);
+        if (cathedras.length == 0) {
+            System.out.println("There are no cathedras to edit");
+        } else {
+            showCathedra();
+            int index;
+            do {
+                index = DataInput.getInt("Enter the index of the cathedra you want to edit: ");
+            } while (index < 0 || index >= cathedras.length);
+            String name = DataInput.getString("enter the new name: ");
+            cathedras[index].setName(name);
+        }
     }
 
     public Cathedra selectCathedra() {
         showCathedra();
-        if (cathedras.length == 0){
+        if (cathedras.length == 0) {
             addCathedra();
         }
-        int index = DataInput.getInt("enter the index of the cathedra you want to work with: ");
-
-        while (index>(cathedras.length- 1)){
-            index = DataInput.getInt("try to enter the index of the cathedra you want to work with again: ");
-        }
-
-            return cathedras[index];
+        int index;
+        do {
+            index = DataInput.getInt("enter the index of the cathedra you want to work with: ");
+        } while (index < 0 || index >= cathedras.length);
+        return cathedras[index];
 
 
     }

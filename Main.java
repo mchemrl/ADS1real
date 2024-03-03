@@ -4,15 +4,9 @@ import Extends.*;
 public class Main {
     static University university;
     public static void main(String[] args) {
-         university = new University("KPI");
+         university = new University("NaUKMA");
         Faculty.addDef();
         Cathedra.addDef();
-        //klfslkj
-//pes patronf
-        //пес патрон
-        //пес патрон
-
-//афджафджажфдllllllllllllllllll
         System.out.println("\n\n~~~~~MAIN MENU~~~~~\n\n");
         int n = DataInput.getInt("~Press 1 if you want to work with faculty;\n" +
                 "~Press 2 if you want to work with cathedra;\n" +
@@ -23,7 +17,7 @@ public class Main {
                 "~Press 7 to show students of cathedra sorted by course;\n" +
                 "~Press 8 to show students/teachers of cathedra sorted by alphabet;\n" +
                 "~Press 9 to show all students of cathedra of specified course;\n" +
-                "~Press 10 to show all students of cathedra of specified course sorted by alpphabet:");
+                "~Press 10 to show all students of cathedra of specified course sorted by alpphabet:\n");
 
         while (n != 0) {
             switch (n) {
@@ -41,14 +35,14 @@ public class Main {
                     int rep =1;
                     while (rep!=0) {
                     System.out.println(university.findStudent());
-                        rep = DataInput.getInt("Enter 0 if you want to return to main menu(else if you want to continue searching - any number):");
+                        rep = DataInput.getInt("Enter 0 if you want to return to main menu(else if you want to continue searching - any number):\n");
                     }
                     break;
                 case 5:
                     rep =1;
                     while (rep!=0) {
                         university.number5();
-                        rep = DataInput.getInt("Enter 0 if you want to return to main menu(else if you want to continue sorting - any number):");
+                        rep = DataInput.getInt("Enter 0 if you want to return to main menu(else if you want to continue sorting - any number):\n");
                     }
                     break;
                 case 6:
@@ -65,14 +59,14 @@ public class Main {
                     rep = 1;
                     while (rep != 0) {
                         university.task9();
-                        rep = rep = DataInput.getInt("Enter 0 if you want to return to main menu(else if you want to continue searching - any number):");
+                        rep = rep = DataInput.getInt("Enter 0 if you want to return to main menu(else if you want to continue searching - any number):\n");
                     }
                     break;
                 case 10:
                     rep = 1;
                     while (rep != 0){
                         university.task10();
-                        rep = DataInput.getInt("Enter 0 if you want to return to main menu(else if you want to continue sorting - any number):");
+                        rep = DataInput.getInt("Enter 0 if you want to return to main menu(else if you want to continue sorting - any number):\n");
                     }
 
                     break;
@@ -87,7 +81,7 @@ public class Main {
                             "Press 7 to show students of cathedra sorted by course;\n" +
                             "Press 8 to show students/teachers of cathedra sorted by alphabet;\n" +
                             "Press 9 to show all students of cathedra of specified course;\n" +
-                            "Press 10 to show all students of cathedra of specified course sorted by alpphabet:");
+                            "Press 10 to show all students of cathedra of specified course sorted by alpphabet:\n");
             }
             System.out.println("\n\n~~~~~MAIN MENU~~~~~\n\n");
             n = DataInput.getInt("~Press 1 if you want to work with faculty;\n" +
@@ -100,7 +94,7 @@ public class Main {
                     "~Press 8 to show students/teachers of cathedra sorted by alphabet;\n" +
                     "~Press 9 to show all students of cathedra of specified course;\n" +
                     "~Press 10 to show all students of cathedra of specified course sorted by alpphabet;\n" +
-                    "(Press 0 to stop program):");
+                    "(Press 0 to stop program):\n");
         }
 
 
@@ -110,7 +104,7 @@ public class Main {
         int fac = DataInput.getInt("~Press 1 if you want to add faculty;\n" +
                 "~Press 2 if you want to delete faculty;\n" +
                 "~Press 3 if you want to edit faculty;\n" +
-                "~Press 4 if you want to show faculty:");
+                "~Press 4 if you want to show faculty:\n");
         while (fac !=0){
             switch (fac){
                 case 1:
@@ -133,14 +127,14 @@ public class Main {
                     fac = DataInput.getInt("~Press 1 if you want to add faculty;\n" +
                             "~Press 2 if you want to delete faculty;\n" +
                             "~Press 3 if you want to edit faculty;\n" +
-                            "~Press 4 if you want to show faculty:");
+                            "~Press 4 if you want to show faculty:\n");
             }
             System.out.println("\n\n~~~~~WORKING WITH FACULTIES~~~~~\n\n");
             fac = DataInput.getInt("~Press 1 if you want to add faculty;\n" +
                     "~Press 2 if you want to delete faculty;\n" +
                     "~Press 3 if you want to edit faculty;\n" +
                     "~Press 4 if you want to show faculty;\n" +
-                    "(Press 0 if you want to stop working with faculty and return to the main menu):");
+                    "(Press 0 if you want to stop working with faculty and return to the main menu):\n");
         }
     }
 
@@ -149,7 +143,7 @@ public class Main {
         int cath = DataInput.getInt("~Press 1 if you want to add cathedra;\n" +
                 "~Press 2 if you want to delete cathedra;\n" +
                 "~Press 3 if you want to edit cathedra;\n" +
-                "~Press 4 if you want to show cathedra:");
+                "~Press 4 if you want to show cathedra:\n");
         while (cath != 0) {
             switch (cath) {
                 case 1:
@@ -169,21 +163,21 @@ public class Main {
                     cath = DataInput.getInt("~Press 1 if you want to add cathedra;\n" +
                             "~Press 2 if you want to delete cathedra;\n" +
                             "~Press 3 if you want to edit cathedra;\n" +
-                            "~Press 4 if you want to show cathedra:");
+                            "~Press 4 if you want to show cathedra:\n");
             }
             System.out.println("\n\n~~~~~WORKING WITH CATHEDRAS~~~~~\n\n");
             cath = DataInput.getInt("~Press 1 if you want to add cathedra;\n" +
                     "~Press 2 if you want to delete cathedra;\n" +
                     "~Press 3 if you want to edit cathedra;\n" +
                     "~Press 4 if you want to show cathedra;\n" +
-                    "(Press 0 if you want to stop working with cathedras and return to the main menu):");
+                    "(Press 0 if you want to stop working with cathedras and return to the main menu):\n");
 
         }
     }
     private static void workingWithPeople() {
         System.out.println("\n\n~~~~~WORKING WITH PEOPLE~~~~~\n\n");
         int people = DataInput.getInt("~Press 1 if you want to work with students;\n" +
-                "~Press 2 if you want to work with teachers:");
+                "~Press 2 if you want to work with teachers:\n");
         while (people != 0) {
             switch (people) {
                 case 1:
@@ -191,20 +185,20 @@ public class Main {
                     int student = DataInput.getInt("~Press 1 if you want to add student;\n" +
                             "~Press 2 if you want to delete student;\n" +
                             "~Press 3 if you want to edit student;\n" +
-                            "~Press 4 if you want to show students:");
+                            "~Press 4 if you want to show students:\n");
                     while (student != 0){
                         switch (student){
                             case 1:
                                 university.addStudent();
-                                university.showAllStudents();
+                               // university.showAllStudents();
                                 break;
                             case 2:
                                 university.deleteStudent();
-                                university.showAllStudents();
+                              //  university.showAllStudents();
                                 break;
                             case 3:
                                 university.editStudent();
-                                university.showAllStudents();
+                              //  university.showAllStudents();
                                 break;
                             case 4:
                                 university.showStudents();
@@ -215,14 +209,14 @@ public class Main {
                                 student = DataInput.getInt("~Press 1 if you want to add student;\n" +
                                         "~Press 2 if you want to delete student;\n" +
                                         "~Press 3 if you want to edit student;\n" +
-                                        "~Press 4 if you want to show students:");
+                                        "~Press 4 if you want to show students:\n");
                         }
                         System.out.println("\n\n~~~~~WORKING WITH STUDENTS~~~~~\n\n");
                         student = DataInput.getInt("~Press 1 if you want to add student;\n" +
                                 "~Press 2 if you want to delete student;\n" +
                                 "~Press 3 if you want to edit student;\n" +
                                 "~Press 4 if you want to show students;\n" +
-                                "(Press 0 if you want to stop working with students and return to working with people menu):");
+                                "(Press 0 if you want to stop working with students and return to working with people menu):\n");
                     }
                     break;
                 case 2:
@@ -230,20 +224,20 @@ public class Main {
                     int teacher = DataInput.getInt("~Press 1 if you want to add teacher;\n" +
                             "~Press 2 if you want to delete teacher;\n" +
                             "~Press 3 if you want to edit teacher;\n" +
-                            "~Press 4 if you want to show teachers:");
+                            "~Press 4 if you want to show teachers:\n");
                     while (teacher != 0){
                         switch (teacher){
                             case 1:
                                 university.addTeacher();
-                                university.showAllTeachers();
+                               // university.showAllTeachers();
                                 break;
                             case 2:
                                 university.deleteTeacher();
-                                university.showAllTeachers();
+                               // university.showAllTeachers();
                                 break;
                             case 3:
                                 university.editTeacher();
-                                university.showAllTeachers();
+                                //university.showAllTeachers();
                                 break;
                             case 4:
                                 university.showTeachers();
@@ -253,25 +247,25 @@ public class Main {
                                 teacher = DataInput.getInt("~Press 1 if you want to add teacher;\n" +
                                         "~Press 2 if you want to delete teacher;\n" +
                                         "~Press 3 if you want to edit teacher;\n" +
-                                        "~Press 4 if you want to show teachers:");
+                                        "~Press 4 if you want to show teachers:\n");
                         }
                         System.out.println("\n\n~~~~~WORKING WITH TEACHERS~~~~~\n\n");
                         teacher = DataInput.getInt("~Press 1 if you want to add teacher;\n" +
                                 "~Press 2 if you want to delete teacher;\n" +
                                 "~Press 3 if you want to edit teacher;\n" +
                                 "~Press 4 if you want to show teacher;\n" +
-                                "(Press 0 if you want to stop working with teachers and return to working with people menu):");
+                                "(Press 0 if you want to stop working with teachers and return to working with people menu):\n");
                     }
                     break;
                 default:
                     System.out.println("\n\n!!!Unknown command. Try one more time!!!\n\n");
                     people = DataInput.getInt("~Press 1 if you want to work with students;\n" +
-                            "~Press 2 if you want to work with teachers:");
+                            "~Press 2 if you want to work with teachers:\n");
             }
             System.out.println("\n\n~~~~~WORKING WITH PEOPLE~~~~~\n\n");
             people = DataInput.getInt("~Press 1 if you want to work with students;\n" +
                     "~Press 2 if you want to work with teachers;\n" +
-                    "(Press 0 if you want to stop working with people and return to the main menu)");
+                    "(Press 0 if you want to stop working with people and return to the main menu)\n");
         }
     }
 

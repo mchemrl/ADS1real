@@ -70,29 +70,52 @@ public class University {
 
     //delete faculty from the array of University
     public static void deleteFaculty() {
-        System.out.println(Arrays.toString(faculties));
-        int index = DataInput.getInt("Enter the index of the faculty you want to delete: ");
-        Faculty[] newFaculties = new Faculty[faculties.length - 1];
-        for (int i = 0, j = 0; i < faculties.length; i++) {
-            if (i != index) {
-                newFaculties[j++] = faculties[i];
+        if (faculties.length == 0) {
+            System.out.println("There are no faculties to delete");
+        } else {
+            showFaculties();
+            int index;
+           do {
+               index = DataInput.getInt("Enter the index of the faculty you want to delete: ");
+           } while (index < 0 || index >= faculties.length);
+            Faculty[] newFaculties = new Faculty[faculties.length - 1];
+            for (int i = 0, j = 0; i < faculties.length; i++) {
+                if (i != index) {
+                    newFaculties[j++] = faculties[i];
+                }
             }
+            faculties = newFaculties;
         }
-        faculties = newFaculties;
     }
 
     //edit faculty from the array of University
     public static void editFaculties() {
-        int index = DataInput.getInt("enter the index of the faculty you want to edit: ");
-        String name = DataInput.getString("enter the new name: ");
-        faculties[index].setName(name);
+        if (faculties.length == 0) {
+            System.out.println("There are no faculties to edit");
+        } else {
+            showFaculties();
+            int index;
+            do{
+                index = DataInput.getInt("enter the index of the faculty you want to edit: ");
+            } while (index < 0 || index >= faculties.length);
+            String name = DataInput.getString("enter the new name: ");
+            faculties[index].setName(name);
+        }
     }
 
     //select faculty
     public static Faculty selectFaculty() {
-        showFaculties();
-        int index = DataInput.getInt("enter the index of the faculty you want to work with: ");
-        return faculties[index];
+        if(faculties.length == 0) {
+            System.out.println("There are no faculties to work with");
+            return null;
+        } else {
+            showFaculties();
+            int index;
+            do {
+                index = DataInput.getInt("enter the index of the faculty you want to work with: ");
+            } while (index < 0 || index >= faculties.length);
+            return faculties[index];
+        }
     }
 
     //add cathedra
@@ -258,7 +281,7 @@ public class University {
         } else if (choice.equals("group")) {
             return findStudentByGroup();
         }
-        return "lol";
+        return " ";
     }
 
     // this method is used to find a teacher by name or discipline
@@ -274,7 +297,7 @@ public class University {
         } else if (choice.equals("discipline")) {
             return findTeacherByDiscipline();
         }
-        return "lol";
+        return " ";
     }
 
     //find teacher by name
@@ -293,8 +316,8 @@ public class University {
             }
         }
         if (!found) {
-            return "unfortunately, there is no teacher with such name";
-        } else return "bye.";
+            return "unfortunately, there is no teacher with such name\n";
+        } else return " ";
     }
 
     //find teacher by discipline
@@ -312,8 +335,8 @@ public class University {
             }
         }
         if (!found) {
-            return "unfortunately, there is no teacher with such discipline";
-        } else return "bye.";
+            return "unfortunately, there is no teacher with such discipline\n";
+        } else return " ";
     }
 
     //find student by name
@@ -334,8 +357,8 @@ public class University {
         }
         if (!found) {
             found = false;
-            return "unfortunately, there is no student with such name";
-        } else return "bye.";
+            return "unfortunately, there is no student with such name\n";
+        } else return " ";
     }
 
     //find student by course
@@ -354,8 +377,8 @@ public class University {
             }
         }
         if (!found) {
-            return "unfortunately, there is no student with such name";
-        } else return "bye.";
+            return "unfortunately, there is no student with such course\n";
+        } else return " ";
     }
 
     //find student by group
@@ -373,8 +396,8 @@ public class University {
             }
         }
         if (!found) {
-            return "Unfortunately, there is no student with such name";
-        } else return "bye.";
+            return "Unfortunately, there is no student with such group\n";
+        } else return " ";
     }
 
 
