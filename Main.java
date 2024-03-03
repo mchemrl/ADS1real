@@ -46,14 +46,24 @@ public class Main {
                     }
                     break;
                 case 6:
-
+                    rep =1;
+                    university.showAllTeachers();
+                    while (rep!=0) {
+                        university.number6Teachers();
+                        rep = DataInput.getInt("Enter 0 if you want to return to main menu(else if you want to continue sorting - any number):\n");
+                    }
                     break;
                 case 7:
 
                     break;
 
                 case 8:
-
+                    rep =1;
+                   // university.showAllStudents();
+                    while (rep!=0) {
+                        university.number8Students();;
+                        rep = DataInput.getInt("Enter 0 if you want to return to main menu(else if you want to continue sorting - any number):\n");
+                    }
                     break;
                 case 9:
                     rep = 1;

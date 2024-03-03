@@ -75,9 +75,9 @@ public class University {
         } else {
             showFaculties();
             int index;
-           do {
-               index = DataInput.getInt("Enter the index of the faculty you want to delete: ");
-           } while (index < 0 || index >= faculties.length);
+            do {
+                index = DataInput.getInt("Enter the index of the faculty you want to delete: ");
+            } while (index < 0 || index >= faculties.length);
             Faculty[] newFaculties = new Faculty[faculties.length - 1];
             for (int i = 0, j = 0; i < faculties.length; i++) {
                 if (i != index) {
@@ -95,7 +95,7 @@ public class University {
         } else {
             showFaculties();
             int index;
-            do{
+            do {
                 index = DataInput.getInt("enter the index of the faculty you want to edit: ");
             } while (index < 0 || index >= faculties.length);
             String name = DataInput.getString("enter the new name: ");
@@ -105,7 +105,7 @@ public class University {
 
     //select faculty
     public static Faculty selectFaculty() {
-        if(faculties.length == 0) {
+        if (faculties.length == 0) {
             System.out.println("There are no faculties to work with");
             return null;
         } else {
@@ -182,19 +182,15 @@ public class University {
     public static Student[] studentArray() {
         int totalStudents = 0;
         for (Faculty faculty : faculties) {
-            for (Cathedra cathedra : faculty.getCathedras()) {
-                totalStudents += cathedra.getStudents().length;
-            }
+            totalStudents += studentsOfFaculty(faculty).length;
         }
 
         Student[] newArray = new Student[totalStudents];
         int index = 0;
         for (Faculty faculty : faculties) {
-            for (Cathedra cathedra : faculty.getCathedras()) {
-                Student[] students = cathedra.getStudents();
-                System.arraycopy(students, 0, newArray, index, students.length);
-                index += students.length;
-            }
+            Student[] students = studentsOfFaculty(faculty);
+            System.arraycopy(students, 0, newArray, index, students.length);
+            index += students.length;
         }
         return newArray;
     }
@@ -203,21 +199,48 @@ public class University {
     public static Teacher[] teacherArray() {
         int totalTeachers = 0;
         for (Faculty faculty : faculties) {
-            for (Cathedra cathedra : faculty.getCathedras()) {
-                totalTeachers += cathedra.getTeachers().length;
-            }
+            totalTeachers += teachersOfFaculty(faculty).length;
         }
         Teacher[] newArray = new Teacher[totalTeachers];
         int index = 0;
         for (Faculty faculty : faculties) {
-            for (Cathedra cathedra : faculty.getCathedras()) {
-                Teacher[] teachers = cathedra.getTeachers();
-                System.arraycopy(teachers, 0, newArray, index, teachers.length);
-                index += teachers.length;
-            }
+            Teacher[] teachers = teachersOfFaculty(faculty);
+            System.arraycopy(teachers, 0, newArray, index, teachers.length);
+            index += teachers.length;
         }
         return newArray;
     }
+
+    public static Teacher[] teachersOfFaculty(Faculty faculty) {
+        int totalTeachers = 0;
+        for (Cathedra cathedra : faculty.getCathedras()) {
+            totalTeachers += cathedra.getTeachers().length;
+        }
+        Teacher[] newArray = new Teacher[totalTeachers];
+        int index = 0;
+        for (Cathedra cathedra : faculty.getCathedras()) {
+            Teacher[] teachers = cathedra.getTeachers();
+            System.arraycopy(teachers, 0, newArray, index, teachers.length);
+            index += teachers.length;
+        }
+        return newArray;
+    }
+
+    public static Student[] studentsOfFaculty(Faculty faculty) {
+        int totalStudents = 0;
+        for (Cathedra cathedra : faculty.getCathedras()) {
+            totalStudents += cathedra.getStudents().length;
+        }
+        Student[] newArray = new Student[totalStudents];
+        int index = 0;
+        for (Cathedra cathedra : faculty.getCathedras()) {
+            Student[] students = cathedra.getStudents();
+            System.arraycopy(students, 0, newArray, index, students.length);
+            index += students.length;
+        }
+        return newArray;
+    }
+
 
     //show the list of all students
     public static void showAllStudents() {
@@ -428,6 +451,72 @@ public class University {
         }
 
 
+    }
+
+    public static void number6Teachers() {
+        showFaculties();
+        int index;
+        do {
+            index = DataInput.getInt("Enter the index of the faculty you want to work with: ");
+        } while (index < 0 || index >= faculties.length);
+        sortedTeachByAlphabet(teachersOfFaculty(faculties[index]));
+
+    }
+
+    public static void number6Students() {
+        showFaculties();
+        int index;
+        do {
+            index = DataInput.getInt("Enter the index of the faculty you want to work with: ");
+        } while (index < 0 || index >= faculties.length);
+        sortedStudByAlphabet(studentsOfFaculty(faculties[index]));
+
+    }
+
+
+    public static void number8Teachers() {
+        sortedTeachByAlphabet(selectFaculty().selectCathedra().getTeachers());
+
+    }
+
+    public static void number8Students() {
+        sortedStudByAlphabet(selectFaculty().selectCathedra().getStudents());
+
+    }
+
+    public static void sortedStudByAlphabet(Student[] students) {
+        for (int i = 0; i < students.length - 1; i++) {
+            for (int j = 0; j < students.length - i - 1; j++) {
+                String name1 = students[j].getFullName();
+                String name2 = students[j + 1].getFullName();
+                if (name1.compareTo(name2) > 0) {
+                    Student temp = students[j];
+                    students[j] = students[j + 1];
+                    students[j + 1] = temp;
+                }
+            }
+        }
+        for (Student student : students) {
+            System.out.println(student.toString());
+        }
+    }
+
+
+    public static void sortedTeachByAlphabet(Teacher[] teachers) {
+        for (int i = 0; i < teachers.length - 1; i++) {
+            for (int j = 0; j < teachers.length - i - 1; j++) {
+                String name1 = teachers[j].getFullName();
+                String name2 = teachers[j + 1].getFullName();
+                if (name1.compareTo(name2) > 0) {
+                    Teacher temp = teachers[j];
+                    teachers[j] = teachers[j + 1];
+                    teachers[j + 1] = temp;
+                }
+            }
+        }
+        for (Teacher teacher : teachers) {
+            System.out.println(teacher.toString());
+        }
     }
 
     //show the list of students of a certain course sorted by name
