@@ -3,6 +3,7 @@ import Extends.*;
 
 public class Main {
     static University university;
+    //main method
     public static void main(String[] args) {
          university = new University("NaUKMA");
         Faculty.addDef();
