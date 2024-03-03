@@ -1,3 +1,6 @@
+/*
+  * This class is used to get input from the user.
+ */
 package Extends;
 
 import java.io.BufferedReader;

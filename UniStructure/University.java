@@ -211,6 +211,7 @@ public class University {
         return newArray;
     }
 
+    // make a new array of teachers from the array of faculties
     public static Teacher[] teachersOfFaculty(Faculty faculty) {
         int totalTeachers = 0;
         for (Cathedra cathedra : faculty.getCathedras()) {
@@ -226,6 +227,7 @@ public class University {
         return newArray;
     }
 
+    // make a new array of students from the array of faculties
     public static Student[] studentsOfFaculty(Faculty faculty) {
         int totalStudents = 0;
         for (Cathedra cathedra : faculty.getCathedras()) {
@@ -290,6 +292,7 @@ public class University {
     }
 
 
+    //find student by name, course or group
     public String findStudent() {
         //ask if you want to find student by name or by course, or group
         String choice;
@@ -453,6 +456,7 @@ public class University {
 
     }
 
+    //output teachers of a certain faculty sorted by name
     public static void number6Teachers() {
         showFaculties();
         int index;
@@ -462,6 +466,7 @@ public class University {
         sortedTeachByAlphabet(teachersOfFaculty(faculties[index]));
 
     }
+    //output students of a certain faculty sorted by name
 
     public static void number6Students() {
         showFaculties();
@@ -474,16 +479,19 @@ public class University {
     }
 
 
+    //output teachers of a certain cathedra sorted by name
     public static void number8Teachers() {
         sortedTeachByAlphabet(selectFaculty().selectCathedra().getTeachers());
 
     }
 
+    //output students of a certain cathedra sorted by name
     public static void number8Students() {
         sortedStudByAlphabet(selectFaculty().selectCathedra().getStudents());
 
     }
 
+    //sort the students by name
     public static void sortedStudByAlphabet(Student[] students) {
         for (int i = 0; i < students.length - 1; i++) {
             for (int j = 0; j < students.length - i - 1; j++) {
@@ -502,6 +510,7 @@ public class University {
     }
 
 
+    //sort the teachers by name
     public static void sortedTeachByAlphabet(Teacher[] teachers) {
         for (int i = 0; i < teachers.length - 1; i++) {
             for (int j = 0; j < teachers.length - i - 1; j++) {
