@@ -86,7 +86,7 @@ public class Cathedra {
         getDushno.addDefStudent("Nazar Stepanenko", 1, 1);
         getProgramming.addDefStudent("Dog Patron", 2, 2);
         getProgramming.addDefStudent("Cat Power", 3, 3);
-        getMath.addDefStudent("канекі кен", 2, 4);
+        getMath.addDefStudent("Канекі кен", 2, 4);
         getMath.addDefStudent("Курт кобейн", 2, 5);
         getMath.addDefStudent("Cher Baguette", 2, 6);
 
