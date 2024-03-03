@@ -38,7 +38,13 @@ public final class DataInput {
             try {
                 s = getString();
                 value = String.valueOf(s);
-                return value;
+                if (isWord(value)) {
+                    return value;
+                }
+                else{
+                    System.out.println("you can use letters only");
+                    value = null;
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -70,7 +76,7 @@ public final class DataInput {
 
 
     private static boolean isWord(String s) {
-        return s != null && s.matches("[a-zA-Zа-яА-ЯіІ ]+");
+        return s != null && s.matches("^[a-zA-Zа-яА-ЯіІїЇєЄ ]+$");
     }
 
     public static Integer getInt(String wr) {

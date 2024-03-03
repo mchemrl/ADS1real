@@ -426,9 +426,9 @@ public class University {
 
     //show all the faculties
     public static void showFaculties() {
-        System.out.println("list of faculties of " + name + ":");
+        System.out.println("\nList of faculties of " + name + ":");
         for (Faculty faculty : faculties) {
-            System.out.println(faculty.toString() + "\n");
+            System.out.println(faculty.toString());
         }
 
     }
@@ -487,8 +487,8 @@ public class University {
     public static void sortedStudByAlphabet(Student[] students) {
         for (int i = 0; i < students.length - 1; i++) {
             for (int j = 0; j < students.length - i - 1; j++) {
-                String name1 = students[j].getFullName();
-                String name2 = students[j + 1].getFullName();
+                String name1 = students[j].getFullName().toLowerCase();
+                String name2 = students[j + 1].getFullName().toLowerCase();
                 if (name1.compareTo(name2) > 0) {
                     Student temp = students[j];
                     students[j] = students[j + 1];
@@ -505,8 +505,8 @@ public class University {
     public static void sortedTeachByAlphabet(Teacher[] teachers) {
         for (int i = 0; i < teachers.length - 1; i++) {
             for (int j = 0; j < teachers.length - i - 1; j++) {
-                String name1 = teachers[j].getFullName();
-                String name2 = teachers[j + 1].getFullName();
+                String name1 = teachers[j].getFullName().toLowerCase();
+                String name2 = teachers[j + 1].getFullName().toLowerCase();
                 if (name1.compareTo(name2) > 0) {
                     Teacher temp = teachers[j];
                     teachers[j] = teachers[j + 1];

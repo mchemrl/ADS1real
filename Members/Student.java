@@ -66,7 +66,7 @@ Student extends Person {
             this.course = course;
         } else {
             System.out.println("course can be only in range of 1 to 6");
-            this.course = 0;
+            setCourse(DataInput.getInt("enter the new course: "));
         }
     }
 
@@ -80,7 +80,7 @@ Student extends Person {
             this.group = group;
         } else {
             System.out.println("group can be only in range of 1 to 10");
-            this.group = 0;
+            setGroup(DataInput.getInt("enter the new group: "));
         }
     }
 
@@ -88,10 +88,13 @@ Student extends Person {
      * create a new student
      */
     public Student createStudent() {
-        String name = DataInput.getString("enter the name: ");
+        Student student = new Student();
+        String name = DataInput.getString("Enter pib: ");
+        student.setFullName(name);
         int course = DataInput.getInt("enter the course: ");
+        student.setCourse(course);
         int group = DataInput.getInt("enter the group: ");
-        Student student = new Student(name, course, group);
+        student.setGroup(group);
         Student[] newStudents = new Student[students.length + 1];
         System.arraycopy(students, 0, newStudents, 0, students.length);
         newStudents[students.length] = student;

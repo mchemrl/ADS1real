@@ -197,7 +197,7 @@ public class Cathedra {
                 while (!change.equals("name") && !change.equals("course") && !change.equals("group"));
                 switch (change) {
                     case "name":
-                        String name = DataInput.getString("enter the new name:");
+                        String name = DataInput.getString("Enter pib: ");
                         this.students[index].setFullName(name);
                         break;
                     case "course":
@@ -236,11 +236,11 @@ public class Cathedra {
             while (!change.equals("name") && !change.equals("discipline"));
             switch (change) {
                 case "name":
-                    String name = DataInput.getString("enter the new name:");
+                    String name = DataInput.getString("Enter pib: ");
                     this.teachers[index].setFullName(name);
                     break;
                 case "discipline":
-                    String discipline = DataInput.getString("enter the new discipline: ");
+                    String discipline = DataInput.getString("Enter discipline: ");
                     this.teachers[index].setDiscipline(discipline);
                     break;
             }

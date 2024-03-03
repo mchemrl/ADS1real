@@ -56,8 +56,8 @@ Teacher extends Person {
      * create a new teacher
      */
     public Teacher createTeacher() {
-        String name = DataInput.getString("enter the name: ");
-        String discipline = DataInput.getString("enter the discipline: ");
+        String name  = DataInput.getString("enter full name: ");
+        String discipline = DataInput.getString("enter discipline: ");
         Teacher teacher = new Teacher(name, discipline);
         Teacher[] newTeachers = new Teacher[ teachers.length + 1];
         System.arraycopy(teachers, 0, newTeachers, 0, teachers.length);
