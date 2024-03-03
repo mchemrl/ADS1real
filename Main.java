@@ -7,6 +7,7 @@ public class Main {
          university = new University("KPI");
         Faculty.addDef();
         Cathedra.addDef();
+        //klfslkj
 
 //афджафджажфдllllllllllllllllll
         System.out.println("\n\n~~~~~MAIN MENU~~~~~\n\n");
