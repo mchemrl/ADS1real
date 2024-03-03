@@ -8,7 +8,7 @@ public class Main {
         Faculty.addDef();
         Cathedra.addDef();
 
-//афджафджажфд
+//афджафджажфдllllllllllllllllll
         System.out.println("\n\n~~~~~MAIN MENU~~~~~\n\n");
         int n = DataInput.getInt("~Press 1 if you want to work with faculty;\n" +
                 "~Press 2 if you want to work with cathedra;\n" +
