@@ -7,7 +7,8 @@ public class Main {
          university = new University("KPI");
         Faculty.addDef();
         Cathedra.addDef();
-
+        //klfslkj
+//pes patronf
         //пес патрон
         //пес патрон
 
