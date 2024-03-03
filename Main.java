@@ -9,6 +9,9 @@ public class Main {
         Cathedra.addDef();
         //klfslkj
 
+        //пес патрон
+        //пес патрон
+
 //афджафджажфдllllllllllllllllll
         System.out.println("\n\n~~~~~MAIN MENU~~~~~\n\n");
         int n = DataInput.getInt("~Press 1 if you want to work with faculty;\n" +
