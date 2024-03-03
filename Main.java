@@ -9,6 +9,7 @@ public class Main {
         Cathedra.addDef();
 
         //пес патрон
+        //пес патрон
 
 //афджафджажфдllllllllllllllllll
         System.out.println("\n\n~~~~~MAIN MENU~~~~~\n\n");
