@@ -69,12 +69,12 @@ public class University {
     //delete faculty from the array of University
     public static void deleteFaculty() {
         if (faculties.length == 0) {
-            System.out.println("There are no faculties to delete");
+            System.out.println("there are no faculties to delete");
         } else {
             showFaculties();
             int index;
             do {
-                index = DataInput.getInt("Enter the index of the faculty you want to delete: ");
+                index = DataInput.getInt("enter the index of the faculty you want to delete: ");
             } while (index < 0 || index >= faculties.length);
             Faculty[] newFaculties = new Faculty[faculties.length - 1];
             for (int i = 0, j = 0; i < faculties.length; i++) {
@@ -475,7 +475,10 @@ public class University {
     public static void task9() {
         Student[] students = selectFaculty().selectCathedra().getStudents();
         boolean found = false;
-        int course = DataInput.getInt("list of students of what course you are searching for?");
+        int course;
+        do{
+        course = DataInput.getInt("list of students of what course you are searching for?");}
+        while (course < 1 || course > 6);
         for (Student student : students) {
             if (student.getCourse() == course) {
                 System.out.println(student.toString());
@@ -483,9 +486,7 @@ public class University {
             }
         }
         if (!found) {
-            System.out.println("Unfortunately there are no students with these characteristics(");
-            return;
-
+            System.out.println("unfortunately there are no students with these characteristics(");
         }
 
 
