@@ -38,8 +38,6 @@ import Extends.DataInput;
 import Members.Student;
 import Members.Teacher;
 
-import java.util.Arrays;
-
 public class University {
     public Student[] students;
     public Teacher[] teachers;
@@ -260,15 +258,25 @@ public class University {
         }
     }
 
-    //show the list of students sorted by course
+    //show the list of students sorted by course increasing
     public static void number5() {
-        sortedByCourse(studentArray());
+        String choice = DataInput.getString("do you want to sort it by increasing or decreasing? ");
+        do {
+            if (choice.equals("increasing")) {
+                sortedByCourseIncreasing(studentArray());
+            } else if (choice.equals("decreasing")) {
+                sortedByCourseDecreasing(studentArray());
+            } else {
+                System.out.println("you can choose only increasing or decreasing");
+            }
+        } while (!choice.equals("increasing") && !choice.equals("decreasing"));
+
     }
 
-    //sort the students by course
-    public static void sortedByCourse(Student[] students) {
-        for (int i = 0; i < studentArray().length - 1; i++) {
-            for (int j = 0; j < studentArray().length - i - 1; j++) {
+    // sort the students by course increasing
+    public static void sortedByCourseIncreasing(Student[] students) {
+        for (int i = 0; i < students.length - 1; i++) {
+            for (int j = 0; j < students.length - i - 1; j++) {
                 int course1 = students[j].getCourse();
                 int course2 = students[j + 1].getCourse();
                 if (course1 > course2) {
@@ -281,14 +289,41 @@ public class University {
         for (Student student : students) {
             System.out.println(student.toString());
         }
-
-
     }
 
-    //show the list of students sorted by course
+    // sort the students by course decreasing
+    public static void sortedByCourseDecreasing(Student[] students) {
+        for (int i = 0; i < students.length - 1; i++) {
+            for (int j = 0; j < students.length - i - 1; j++) {
+                int course1 = students[j].getCourse();
+                int course2 = students[j + 1].getCourse();
+                if (course1 < course2) {
+                    Student temp = students[j];
+                    students[j] = students[j + 1];
+                    students[j + 1] = temp;
+                }
+            }
+        }
+        for (Student student : students) {
+            System.out.println(student.toString());
+        }
+    }
+
+    // show the list of students sorted by course
     public static void number7() {
-        Student[] students = selectFaculty().selectCathedra().getStudents();
-        sortedByCourse(students);
+        String choice;
+        do {
+            choice = DataInput.getString("Do you want to sort it by increasing or decreasing? ");
+            if (choice.equals("increasing")) {
+                Student[] students = selectFaculty().selectCathedra().getStudents();
+                sortedByCourseIncreasing(students);
+            } else if (choice.equals("decreasing")) {
+                Student[] students = selectFaculty().selectCathedra().getStudents();
+                sortedByCourseDecreasing(students);
+            } else {
+                System.out.println("You can choose only increasing or decreasing.");
+            }
+        } while (!choice.equals("increasing") && !choice.equals("decreasing"));
     }
 
 
@@ -456,43 +491,75 @@ public class University {
 
     }
 
-    //output teachers of a certain faculty sorted by name
-    public static void number6Teachers() {
-        showFaculties();
-        int index;
-        do {
-            index = DataInput.getInt("Enter the index of the faculty you want to work with: ");
-        } while (index < 0 || index >= faculties.length);
-        sortedTeachByAlphabet(teachersOfFaculty(faculties[index]));
-
-    }
     //output students of a certain faculty sorted by name
 
-    public static void number6Students() {
+    public static void number6() {
         showFaculties();
         int index;
         do {
             index = DataInput.getInt("Enter the index of the faculty you want to work with: ");
         } while (index < 0 || index >= faculties.length);
-        sortedStudByAlphabet(studentsOfFaculty(faculties[index]));
+        String people = DataInput.getString("Do you want to sort students or teachers?");
+        do {
 
+        if (people.equals("students")) {
+            String choice = DataInput.getString("do you want to sort it by increasing or decreasing? ");
+            do{
+            if (choice.equals("increasing")) {
+                sortedStudByAlphabetIncreasing(studentsOfFaculty(faculties[index]));
+            } else if (choice.equals("decreasing")) {
+                sortedStudByAlphabetDecreasing(studentsOfFaculty(faculties[index]));
+            } else {
+                System.out.println("you can choose only increasing or decreasing");
+            }} while (!choice.equals("increasing") && !choice.equals("decreasing"));
+        } else if (people.equals("teachers")) {
+            String choice = DataInput.getString("do you want to sort it by increasing or decreasing? ");
+            do{
+            if (choice.equals("increasing")) {
+                sortedTeachByAlphabetIncreasing(teachersOfFaculty(faculties[index]));
+            } else if (choice.equals("decreasing")) {
+                sortedTeachByAlphabetDecreasing(teachersOfFaculty(faculties[index]));
+            } else {
+                System.out.println("you can choose only increasing or decreasing");
+            }} while (!choice.equals("increasing") && !choice.equals("decreasing"));
+        } else {
+            System.out.println("you can choose only students or teachers");
+        }} while (!people.equals("students") && !people.equals("teachers"));
     }
 
-
-    //output teachers of a certain cathedra sorted by name
-    public static void number8Teachers() {
-        sortedTeachByAlphabet(selectFaculty().selectCathedra().getTeachers());
-
+    public static void number8(){
+        String people = DataInput.getString("do you want to sort students or teachers?");
+        do {
+            if (people.equals("students")) {
+                String choice = DataInput.getString("do you want to sort it by increasing or decreasing? ");
+                do {
+                    if (choice.equals("increasing")) {
+                        sortedStudByAlphabetIncreasing(selectFaculty().selectCathedra().getStudents());
+                    } else if (choice.equals("decreasing")) {
+                        sortedStudByAlphabetDecreasing(selectFaculty().selectCathedra().getStudents());
+                    } else {
+                        System.out.println("you can choose only increasing or decreasing");
+                    }
+                } while (!choice.equals("increasing") && !choice.equals("decreasing"));
+            } else if (people.equals("teachers")) {
+                String choice = DataInput.getString("do you want to sort it by increasing or decreasing? ");
+                do {
+                    if (choice.equals("increasing")) {
+                        sortedTeachByAlphabetIncreasing(selectFaculty().selectCathedra().getTeachers());
+                    } else if (choice.equals("decreasing")) {
+                        sortedTeachByAlphabetDecreasing(selectFaculty().selectCathedra().getTeachers());
+                    } else {
+                        System.out.println("you can choose only increasing or decreasing");
+                    }
+                } while (!choice.equals("increasing") && !choice.equals("decreasing"));
+            } else {
+                System.out.println("you can choose only students or teachers");
+            }
+        } while (!people.equals("students") && !people.equals("teachers"));
     }
 
-    //output students of a certain cathedra sorted by name
-    public static void number8Students() {
-        sortedStudByAlphabet(selectFaculty().selectCathedra().getStudents());
-
-    }
-
-    //sort the students by name
-    public static void sortedStudByAlphabet(Student[] students) {
+    //sort the students by name increasing
+    public static void sortedStudByAlphabetIncreasing(Student[] students) {
         for (int i = 0; i < students.length - 1; i++) {
             for (int j = 0; j < students.length - i - 1; j++) {
                 String name1 = students[j].getFullName().toLowerCase();
@@ -509,9 +576,28 @@ public class University {
         }
     }
 
+    //sort the students by name decreasing
 
-    //sort the teachers by name
-    public static void sortedTeachByAlphabet(Teacher[] teachers) {
+    public static void sortedStudByAlphabetDecreasing(Student[] students) {
+        for (int i = 0; i < students.length - 1; i++) {
+            for (int j = 0; j < students.length - i - 1; j++) {
+                String name1 = students[j].getFullName().toLowerCase();
+                String name2 = students[j + 1].getFullName().toLowerCase();
+                if (name1.compareTo(name2) < 0) {
+                    Student temp = students[j];
+                    students[j] = students[j + 1];
+                    students[j + 1] = temp;
+                }
+            }
+        }
+        for (Student student : students) {
+            System.out.println(student.toString());
+        }
+    }
+
+
+    //sort the teachers by name inreasing
+    public static void sortedTeachByAlphabetIncreasing(Teacher[] teachers) {
         for (int i = 0; i < teachers.length - 1; i++) {
             for (int j = 0; j < teachers.length - i - 1; j++) {
                 String name1 = teachers[j].getFullName().toLowerCase();
@@ -527,6 +613,26 @@ public class University {
             System.out.println(teacher.toString());
         }
     }
+
+    //sort the teachers by name decreasing
+
+    public static void sortedTeachByAlphabetDecreasing(Teacher[] teachers) {
+        for (int i = 0; i < teachers.length - 1; i++) {
+            for (int j = 0; j < teachers.length - i - 1; j++) {
+                String name1 = teachers[j].getFullName().toLowerCase();
+                String name2 = teachers[j + 1].getFullName().toLowerCase();
+                if (name1.compareTo(name2) < 0) {
+                    Teacher temp = teachers[j];
+                    teachers[j] = teachers[j + 1];
+                    teachers[j + 1] = temp;
+                }
+            }
+        }
+        for (Teacher teacher : teachers) {
+            System.out.println(teacher.toString());
+        }
+    }
+
 
     //show the list of students of a certain course sorted by name
     public static void task10() {
@@ -556,7 +662,6 @@ public class University {
 
         } else {
             System.out.println("Unfortunately there are no students with these characteristics(");
-            return;
         }
     }
 
@@ -568,12 +673,9 @@ public class University {
         int middleIndex = size / 2;
         Student[] leftHalf = new Student[middleIndex];
         Student[] rightHalf = new Student[size - middleIndex];
-        for (int i = 0; i < middleIndex; i++) {
-            leftHalf[i] = students[i];
-        }
-        for (int i = middleIndex; i < size; i++) {
-            rightHalf[i - middleIndex] = students[i];
-        }
+        System.arraycopy(students, 0, leftHalf, 0, middleIndex);
+        if (size - middleIndex >= 0)
+            System.arraycopy(students, middleIndex, rightHalf, middleIndex - middleIndex, size - middleIndex);
         sortStudentsNames(leftHalf, sortDirection, middleIndex);
         sortStudentsNames(rightHalf, sortDirection, size - middleIndex);
         mergeStudentsNames(students, leftHalf, rightHalf, sortDirection);

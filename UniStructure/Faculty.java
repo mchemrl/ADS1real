@@ -8,8 +8,6 @@ package UniStructure;
 
 import Extends.DataInput;
 
-import java.util.Arrays;
-
 public class Faculty {
 
     private String name;
@@ -18,10 +16,6 @@ public class Faculty {
     public Faculty(String name) {
         this.name = name;
         this.cathedras = new Cathedra[0];
-    }
-
-    public Faculty() {
-        this("undefined name");
     }
 
     public String getName() {

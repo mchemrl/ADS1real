@@ -32,7 +32,7 @@ public class Cathedra {
     /**
      * constructor for a cathedra
      *
-     * @param name
+     * @param name name
      */
     public Cathedra(String name) {
         this.name = name;

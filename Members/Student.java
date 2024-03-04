@@ -75,11 +75,11 @@ public class Student extends Person {
      * @param group group
      */
     public void setGroup(int group) {
+
         if (group > 0 && group <= 10) {
             this.group = group;
         } else {
             System.out.println("group can be only in range of 1 to 10");
-            setGroup(DataInput.getInt("enter the new group: "));
         }
     }
 
@@ -92,7 +92,10 @@ public class Student extends Person {
         student.setFullName(name);
         int course = DataInput.getInt("enter the course: ");
         student.setCourse(course);
-        int group = DataInput.getInt("enter the group: ");
+        int group;
+        do{
+        group = DataInput.getInt("enter the group: ");}
+        while (group < 1 || group > 10);
         student.setGroup(group);
         Student[] newStudents = new Student[students.length + 1];
         System.arraycopy(students, 0, newStudents, 0, students.length);
